@@ -1,0 +1,29 @@
+<!-- Add Client Form: Inputs for creating a new client profile -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Register New Client</h2>
+    <form method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" required>
+
+        <label for="age">Age</label>
+        <input type="number" name="age">
+
+        <label for="height">Height (cm)</label>
+        <input type="number" name="height" step="0.1">
+
+        <label for="weight">Weight (kg)</label>
+        <input type="number" name="weight" step="0.1" required>
+
+        <label for="program">Program</label>
+        <select name="program">
+            <!-- Dynamically populate program options from the PROGRAMS dictionary -->
+            {% for key, val in programs.items() %}
+                <option value="{{ key }}">{{ key }} - {{ val['desc'] }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Save Client</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!-- Log Workout Form: Allows adding a new workout session -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Log Workout</h2>
+    <form method="post">
+        <label>Date</label>
+        <input type="date" name="date" value="{{ today }}" required>
+
+        <label>Workout Type</label>
+        <select name="type">
+            <option value="Strength">Strength</option>
+            <option value="Hypertrophy">Hypertrophy</option>
+            <option value="Conditioning">Conditioning</option>
+            <option value="Mobility">Mobility</option>
+        </select>
+
+        <label>Duration (minutes)</label>
+        <input type="number" name="duration" value="60">
+
+        <label>Notes</label>
+        <input type="text" name="notes" placeholder="e.g. Squat 5x5, felt strong">
+
+        <button type="submit">Save Workout</button>
+    </form>
+    <br>
+    <a href="{{ url_for('client_detail', client_id=client_id) }}">Cancel</a>
+{% endblock %}

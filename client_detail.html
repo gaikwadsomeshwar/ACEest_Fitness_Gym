@@ -1,0 +1,22 @@
+<!-- Client Profile: Displays detailed information for a specific client -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Client Profile: {{ client['name'] }}</h2>
+    <div style="background-color: #333; padding: 20px; border-radius: 5px;">
+        <p><strong>Age:</strong> {{ client['age'] }}</p>
+        <p><strong>Height:</strong> {{ client['height'] }} cm</p>
+        <p><strong>Weight:</strong> {{ client['weight'] }} kg</p>
+        <p><strong>Program:</strong> {{ client['program'] }}</p>
+        <p><strong>Daily Calorie Target:</strong> {{ client['calories'] }} kcal</p>
+        <p><strong>Membership Status:</strong> {{ client['membership_status'] }}</p>
+        <hr style="border-color: #555;">
+        <h3>Program Notes</h3>
+        <p>
+            <em>Program logic derived from ACEest System v3.</em><br>
+            Targeting {{ client['program'] }} specific adaptations.
+        </p>
+    </div>
+    <br>
+    <a href="{{ url_for('index') }}">Back to Dashboard</a>
+{% endblock %}

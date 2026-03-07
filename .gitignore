@@ -1,0 +1,21 @@
+# Virtual Environment
+# Ignore the virtual environment folder
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Database files
+# Ignore SQLite database files
+*.db
+*.db-journal
+
+# IDE configuration folders
+.vscode/
+.idea/
+
+# macOS specific files
+.DS_Store

@@ -1,0 +1,35 @@
+<!-- Generated Program: Displays the AI-created workout schedule -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>AI Generated Program for {{ client['name'] }}</h2>
+    <p><strong>Focus:</strong> {{ focus }}</p>
+    
+    <!-- Loop through the generated schedule dictionary (Day -> Exercises) -->
+    {% for day, exercises in schedule.items() %}
+    <div style="background-color: #333; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
+        <h3 style="color: #d4af37; margin-top: 0;">{{ day }}</h3>
+        <table style="margin-top: 5px;">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ex in exercises %}
+                <tr>
+                    <td>{{ ex.name }}</td>
+                    <td>{{ ex.sets }}</td>
+                    <td>{{ ex.reps }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+
+    <br>
+    <a href="{{ url_for('client_detail', client_id=client['id']) }}">Back to Profile</a>
+{% endblock %}
