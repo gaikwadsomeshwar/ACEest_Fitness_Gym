@@ -66,6 +66,17 @@ Open your web browser and navigate to:
 - **Local Machine:** `http://127.0.0.1:5000`
 - **Network:** `http://<your-ip-address>:5000`
 
+## Running Tests
+
+To verify the application logic and ensure everything is working as expected, you can run the included test suite manually.
+
+1. Ensure your virtual environment is activated and dependencies are installed.
+2. Run the tests using `pytest`:
+
+```bash
+pytest
+```
+
 ## Docker Setup (Recommended)
 
 To avoid compatibility issues with local Python versions (like Python 3.14), run the application using Docker.
