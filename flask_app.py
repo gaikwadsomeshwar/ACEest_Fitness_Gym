@@ -88,40 +88,44 @@ def index():
 def add_client():
     if request.method == 'POST':
         name = request.form['name']
-        age = request.form['age']
+        age = request.form.get('age')
         weight = request.form['weight']
-        height = request.form['height']
+        height = request.form.get('height')
         program = request.form['program']
 
         if not name or not weight or not program:
             flash('Name, Weight, and Program are required!')
         else:
             # Calculate daily calorie target based on weight and program factor
+            conn = None
             try:
                 weight_val = float(weight)
                 factor = PROGRAMS[program]['factor']
                 calories = int(weight_val * factor)
-                
+
                 # Calculate target weight based on program
                 target_weight = weight_val
                 if "Fat Loss" in program:
                     target_weight = weight_val * 0.95
                 elif "Muscle Gain" in program:
                     target_weight = weight_val * 1.05
-                
+
                 conn = get_db_connection()
                 conn.execute("""
                     INSERT INTO clients (name, age, height, weight, program, calories, target_weight)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
                 """, (name, age, height, weight_val, program, calories, round(target_weight, 1)))
                 conn.commit()
-                conn.close()
                 flash(f'Client {name} added successfully!')
                 return redirect(url_for('index'))
             except sqlite3.IntegrityError:
                 flash(f'Client with name {name} already exists.')
+                return render_template('add_client.html', programs=PROGRAMS), 400
             except ValueError:
                 flash('Invalid numeric input for Age, Weight, or Height.')
+            finally:
+                if conn:
+                    conn.close()
 
     return render_template('add_client.html', programs=PROGRAMS)
 

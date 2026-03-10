@@ -63,10 +63,14 @@ def test_add_client_and_calorie_logic(client):
     assert b"Client Test User added successfully!" in response.data
 
     # Verify the data directly in the database to confirm internal logic
-    conn = sqlite3.connect(TEST_DB)
-    conn.row_factory = sqlite3.Row
-    client_row = conn.execute('SELECT * FROM clients WHERE name = ?', ('Test User',)).fetchone()
-    conn.close()
+    client_row = None
+    try:
+        conn = sqlite3.connect(TEST_DB)
+        conn.row_factory = sqlite3.Row
+        client_row = conn.execute('SELECT * FROM clients WHERE name = ?', ('Test User',)).fetchone()
+    finally:
+        if 'conn' in locals() and conn:
+            conn.close()
 
     # Assert that the database record is correct
     assert client_row is not None
@@ -76,12 +80,13 @@ def test_add_client_and_calorie_logic(client):
 
 def test_delete_client(client):
     """Test that a client can be successfully deleted."""
-    # First, add a client to be deleted
-    client.post('/add_client', data={'name': 'UserToDelete', 'weight': 80, 'program': 'Beginner (BG)'})
-    
-    # Get the new client's ID from the database
+    # First, add a client to be deleted directly to the database
     conn = sqlite3.connect(TEST_DB)
-    client_id = conn.execute('SELECT id FROM clients WHERE name = ?', ('UserToDelete',)).fetchone()[0]
+    cur = conn.cursor()
+    cur.execute("INSERT INTO clients (name, age, height, weight, program) VALUES (?, ?, ?, ?, ?)",
+                ('UserToDelete', 30, 170, 80, 'Beginner (BG)'))
+    client_id = cur.lastrowid
+    conn.commit()
     conn.close()
 
     # Send a POST request to the delete endpoint
@@ -95,11 +100,23 @@ def test_delete_client(client):
 def test_duplicate_client_error(client):
     """Test that adding a client with a duplicate name shows the correct error."""
     # Add a client
-    client.post('/add_client', data={'name': 'Duplicate User', 'weight': 90, 'program': 'Muscle Gain (MG)'})
+    client.post('/add_client', data={
+        'name': 'Duplicate User',
+        'age': '30',
+        'height': '180',
+        'weight': '90',
+        'program': 'Muscle Gain (MG)'
+    })
 
     # Attempt to add the same client again
-    response = client.post('/add_client', data={'name': 'Duplicate User', 'weight': 95, 'program': 'Fat Loss (FL)'}, follow_redirects=True)
+    response = client.post('/add_client', data={
+        'name': 'Duplicate User',
+        'age': '31',
+        'height': '181',
+        'weight': '95',
+        'program': 'Fat Loss (FL)'
+    })
 
     # Assert that the correct flash message is displayed
-    assert response.status_code == 200
+    assert response.status_code == 400
     assert b"Client with name Duplicate User already exists." in response.data
