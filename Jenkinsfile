@@ -1,6 +1,10 @@
 pipeline {
   agent any
-
+  environment {
+    // Define variables for Docker Hub username/repo and credential ID
+    DOCKERHUB_REPO = 'someshwargaikwad/acetest-fitness-gym-flaskapp' // e.g., myuser/my-app
+    DOCKER_CRED_ID = 'dockerhub-cred' // The ID you set in Jenkins credentials
+  }
   stages {
     stage('Checkout Code') {
       steps {
@@ -27,16 +31,27 @@ pipeline {
       }
     }
 
-    stage('Deploy Application') {
+    stage('Build Image') {
       steps {
         script {
-          // Stop any existing container and run a new one in detached mode
-          powershell 'docker stop acetest-fitness-gym-flaskapp; if ($?) { $true }'
-          powershell 'docker rm acetest-fitness-gym-flaskapp; if ($?) { $true }'
-          powershell 'docker run -d --name acetest-fitness-gym-flaskapp -p 5000:5000 acetest-fitness-gym-flaskapp:latest'
+          // Build the image using the Dockerfile in the current directory, tagging with the build number
+          dockerImage = docker.build("${DOCKERHUB_REPO}:${env.BUILD_NUMBER}")
+          // Tag the image with 'latest' as well
+          dockerImage.tag('latest')
         }
       }
     }
+        stage('Push Image') {
+      steps {
+        script {
+          // Use withRegistry to log in and push the images securely
+          docker.withRegistry('https://registry.docker.io', DOCKER_CRED_ID) {
+            dockerImage.push("${env.BUILD_NUMBER}")
+            dockerImage.push('latest')
+          }
+        }
+      }
+        }
   }
 
   post {
@@ -45,6 +60,6 @@ pipeline {
       }
       failure {
         echo 'Pipeline failed. Check logs for details.'
-    }
+      }
   }
 }
