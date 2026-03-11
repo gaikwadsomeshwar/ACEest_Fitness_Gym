@@ -1,23 +1,50 @@
 pipeline {
   agent any
+
   stages {
-    stage('Build & Test') {
+    stage('Checkout Code') {
       steps {
-        sh 'python3 -m venv venv'
-        sh './venv/bin/pip install -r requirements.txt'
-        sh './venv/bin/pytest test_app.py'
+        checkout scm
       }
     }
-    stage('Run Flask App') {
+
+    stage('Build Docker Image') {
       steps {
-        // Background process example
-        sh 'nohup ./venv/bin/python flask_app.py > flask.log 2>&1 &'
+        script {
+          // Build the Docker image and tag it
+          sh 'docker build -t acetest-fitness-gym-flaskapp:latest .'
+        }
       }
     }
-    stage('Create docker image') {
+
+    stage('Run Unit Tests') {
       steps {
-        sh 'docker build -t flask-app:latest .'
+        script {
+          // Run pytest within a new container from the built image
+          // The --rm flag automatically removes the container after tests finish
+          sh 'docker run --rm acetest-fitness-gym-flaskapp:latest pytest'
+        }
       }
+    }
+
+    stage('Deploy Application') {
+      steps {
+        script {
+          // Stop any existing container and run a new one in detached mode
+          sh 'docker stop acetest-fitness-gym-flaskapp || true'
+          sh 'docker rm acetest-fitness-gym-flaskapp || true'
+          sh 'docker run -d --name acetest-fitness-gym-flaskapp -p 5000:5000 acetest-fitness-gym-flaskapp:latest'
+        }
+      }
+    }
+  }
+
+  post {
+      success {
+        echo 'Pipeline executed successfully!'
+      }
+      failure {
+        echo 'Pipeline failed. Check logs for details.'
     }
   }
 }
