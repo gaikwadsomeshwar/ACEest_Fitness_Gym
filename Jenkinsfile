@@ -31,8 +31,8 @@ pipeline {
       steps {
         script {
           // Stop any existing container and run a new one in detached mode
-          powershell 'docker stop acetest-fitness-gym-flaskapp || true'
-          powershell 'docker rm acetest-fitness-gym-flaskapp || true'
+          powershell 'docker stop acetest-fitness-gym-flaskapp; if ($?) { $true }'
+          powershell 'docker rm acetest-fitness-gym-flaskapp; if ($?) { $true }'
           powershell 'docker run -d --name acetest-fitness-gym-flaskapp -p 5000:5000 acetest-fitness-gym-flaskapp:latest'
         }
       }
