@@ -45,7 +45,7 @@ pipeline {
       steps {
         script {
           // Use withRegistry to log in and push the images securely
-          docker.withRegistry('https://registry.docker.io', DOCKER_CRED_ID) {
+          docker.withRegistry("https://hub.docker.com/repository/docker/${DOCKERHUB_REPO}", DOCKER_CRED_ID) {
             dockerImage.push("${env.BUILD_NUMBER}")
             dockerImage.push('latest')
           }
