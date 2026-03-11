@@ -12,7 +12,7 @@ pipeline {
       steps {
         script {
           // Build the Docker image and tag it
-          sh 'docker build -t acetest-fitness-gym-flaskapp:latest .'
+          powershell 'docker build -t acetest-fitness-gym-flaskapp:latest .'
         }
       }
     }
@@ -22,7 +22,7 @@ pipeline {
         script {
           // Run pytest within a new container from the built image
           // The --rm flag automatically removes the container after tests finish
-          sh 'docker run --rm acetest-fitness-gym-flaskapp:latest pytest'
+          powershell 'docker run --rm acetest-fitness-gym-flaskapp:latest pytest'
         }
       }
     }
@@ -31,9 +31,9 @@ pipeline {
       steps {
         script {
           // Stop any existing container and run a new one in detached mode
-          sh 'docker stop acetest-fitness-gym-flaskapp || true'
-          sh 'docker rm acetest-fitness-gym-flaskapp || true'
-          sh 'docker run -d --name acetest-fitness-gym-flaskapp -p 5000:5000 acetest-fitness-gym-flaskapp:latest'
+          powershell 'docker stop acetest-fitness-gym-flaskapp || true'
+          powershell 'docker rm acetest-fitness-gym-flaskapp || true'
+          powershell 'docker run -d --name acetest-fitness-gym-flaskapp -p 5000:5000 acetest-fitness-gym-flaskapp:latest'
         }
       }
     }
