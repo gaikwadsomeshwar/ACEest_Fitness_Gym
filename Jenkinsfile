@@ -2,8 +2,9 @@ pipeline {
   agent any
   environment {
     // Define variables for Docker Hub username/repo and credential ID
-    DOCKERHUB_REPO = 'someshwargaikwad/acetest-fitness-gym-flaskapp' // e.g., myuser/my-app
-    DOCKER_CRED_ID = 'dockerhub-cred' // The ID you set in Jenkins credentials
+    DOCKERHUB_REG = 'hub.docker.com'
+    DOCKER_USERNAME = 'someshwargaikwad'
+    DOCKER_CRED_ID = 'dockerhub-cred'
   }
   stages {
     stage('Checkout Code') {
@@ -31,27 +32,14 @@ pipeline {
       }
     }
 
-    stage('Build Image') {
+    stage('Push DockerImage') {
       steps {
         script {
-          // Build the image using the Dockerfile in the current directory, tagging with the build number
-          dockerImage = docker.build("${DOCKERHUB_REPO}:${env.BUILD_NUMBER}")
-          // Tag the image with 'latest' as well
-          dockerImage.tag('latest')
+          powershell 'echo ${env.DOCKER_CRED_ID} | docker login --username ${env.DOCKER_USERNAME} --password-stdin ${env.DOCKERHUB_REG}'
+          powershell 'docker push ${env.DOCKERHUB_USERNAME}/acetest-fitness-gym-flaskapp:latest'
         }
       }
     }
-        stage('Push Image') {
-      steps {
-        script {
-          // Use withRegistry to log in and push the images securely
-          docker.withRegistry("https://hub.docker.com/repository/docker/${DOCKERHUB_REPO}", DOCKER_CRED_ID) {
-            dockerImage.push("${env.BUILD_NUMBER}")
-            dockerImage.push('latest')
-          }
-        }
-      }
-        }
   }
 
   post {
