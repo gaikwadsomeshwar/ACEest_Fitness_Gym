@@ -17,7 +17,7 @@ pipeline {
       steps {
         script {
           // Build the Docker image using the Dockerfile in the current directory
-          docker.build("${IMAGE_NAME}:latest", ".")
+          powershell 'docker build -t ${IMAGE_NAME}:latest .'
         }
       }
     }
@@ -26,18 +26,7 @@ pipeline {
       steps {
         script {
           // Run unit tests inside a temporary container
-          docker.image("${IMAGE_NAME}:latest").inside {
-            sh 'pytest'
-          }
-        }
-      }
-    }
-
-    stage ('Remove docker image') {
-      steps {
-        script {
-          // Remove the Docker image to free up space
-          docker.rmi("${IMAGE_NAME}:latest")
+          powershell 'docker run --rm ${IMAGE_NAME}:latest pytest'
         }
       }
     }
@@ -46,10 +35,8 @@ pipeline {
       steps {
         script {
           // Login to Docker Hub and push the image
-          docker.withRegistry('https://hub.docker.com', DOCKER_HUB_CRED_ID) {
-            docker.build('${USERNAME}/${IMAGE_NAME}', '.').push("latest")
-          }
-        }
+          docker.withRegistry('https://hub.docker.com', DOCKER_HUB_CRED_ID)
+          powershell 'docker push ${USERNAME}/${IMAGE_NAME}:latest'
       }
     }
   }
