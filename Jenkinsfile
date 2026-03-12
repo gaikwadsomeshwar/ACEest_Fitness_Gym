@@ -17,7 +17,7 @@ pipeline {
       steps {
         script {
           // Build the Docker image using the Dockerfile in the current directory
-          powershell 'docker build -t ${IMAGE_NAME}:latest .'
+          powershell "docker build -t ${IMAGE_NAME}:latest ."
         }
       }
     }
@@ -26,7 +26,7 @@ pipeline {
       steps {
         script {
           // Run unit tests inside a temporary container
-          powershell 'docker run --rm ${IMAGE_NAME}:latest pytest'
+          powershell "docker run --rm ${IMAGE_NAME}:latest pytest"
         }
       }
     }
@@ -36,7 +36,7 @@ pipeline {
         script {
           // Login to Docker Hub and push the image
           docker.withRegistry('https://hub.docker.com', DOCKER_HUB_CRED_ID)
-          powershell 'docker push ${USERNAME}/${IMAGE_NAME}:latest'
+          powershell "docker push ${USERNAME}/${IMAGE_NAME}:latest"
         }
       }
     }
