@@ -1,7 +1,8 @@
 pipeline {
   agent any
   environment {
-    IMAGE_NAME = 'someshwargaikwad/acetest-fitness-gym-flaskapp'
+    IMAGE_NAME = 'acetest-fitness-gym-flaskapp'
+    USERNAME = 'someshwargaikwad'
     DOCKER_HUB_CRED_ID = 'dockerhub-cred'
   }
 
@@ -15,8 +16,7 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         script {
-          // Build the Docker image and tag it
-          powershell 'docker build -t acetest-fitness-gym-flaskapp:latest .'
+          docker.build("${IMAGE_NAME}:latest", ".")
         }
       }
     }
@@ -24,9 +24,9 @@ pipeline {
     stage('Run Unit Tests') {
       steps {
         script {
-          // Run pytest within a new container from the built image
-          // The --rm flag automatically removes the container after tests finish
-          powershell 'docker run --rm acetest-fitness-gym-flaskapp:latest pytest'
+          docker.image("${IMAGE_NAME}:latest").inside {
+            sh 'pytest'
+          }
         }
       }
     }
@@ -35,7 +35,7 @@ pipeline {
       steps {
         script {
           // Remove the Docker image to free up space
-          powershell 'docker rmi acetest-fitness-gym-flaskapp:latest'
+          docker.rmi("${IMAGE_NAME}:latest")
         }
       }
     }
@@ -43,8 +43,8 @@ pipeline {
     stage('Login and Push Image to Docker Hub') {
       steps {
         script {
-          docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CRED_ID) {
-            docker.build('acetest-fitness-gym-flaskapp', '.').push("latest")
+          docker.withRegistry('https://hub.docker.com', DOCKER_HUB_CRED_ID) {
+            docker.build('${USERNAME}/${IMAGE_NAME}', '.').push("latest")
           }
         }
       }
