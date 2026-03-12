@@ -18,7 +18,7 @@ pipeline {
         script {
           // Build the Docker image using the Dockerfile in the current directory
           powershell (
-            docker build -t ${IMAGE_NAME}:latest .
+            "docker build -t ${IMAGE_NAME}:latest ."
           )
         }
       }
@@ -29,7 +29,7 @@ pipeline {
         script {
           // Run unit tests inside a temporary container
           powershell (
-            docker run --rm ${IMAGE_NAME}:latest pytest
+            "docker run --rm ${IMAGE_NAME}:latest pytest"
           )
         }
       }
