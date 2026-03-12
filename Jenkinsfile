@@ -37,6 +37,7 @@ pipeline {
           // Login to Docker Hub and push the image
           docker.withRegistry('https://hub.docker.com', DOCKER_HUB_CRED_ID)
           powershell 'docker push ${USERNAME}/${IMAGE_NAME}:latest'
+        }
       }
     }
   }
@@ -48,6 +49,5 @@ pipeline {
       failure {
         echo 'Pipeline failed. Check logs for details.'
       }
-    }
   }
 }
