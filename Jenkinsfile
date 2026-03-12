@@ -16,6 +16,7 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         script {
+          // Build the Docker image using the Dockerfile in the current directory
           docker.build("${IMAGE_NAME}:latest", ".")
         }
       }
@@ -24,9 +25,8 @@ pipeline {
     stage('Run Unit Tests') {
       steps {
         script {
-          docker.image("${IMAGE_NAME}:latest").inside {
-            sh 'pytest'
-          }
+          // Run unit tests using pytest
+          powershell 'docker run --rm ${IMAGE_NAME}:latest pytest'
         }
       }
     }
@@ -43,6 +43,7 @@ pipeline {
     stage('Login and Push Image to Docker Hub') {
       steps {
         script {
+          // Login to Docker Hub and push the image
           docker.withRegistry('https://hub.docker.com', DOCKER_HUB_CRED_ID) {
             docker.build('${USERNAME}/${IMAGE_NAME}', '.').push("latest")
           }
