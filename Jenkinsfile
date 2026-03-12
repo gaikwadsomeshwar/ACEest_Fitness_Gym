@@ -31,20 +31,23 @@ pipeline {
       }
     }
 
-    stage('Login and Push Image to Docker Hub') {
+    stage ('Remove docker image') {
       steps {
         script {
-          docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CRED_ID) {
-            dockerImage.push('latest')
-          }
+          // Remove the Docker image to free up space
+          powershell 'docker rmi acetest-fitness-gym-flaskapp:latest'
         }
       }
     }
 
-    stage('Clean up') {
-        steps {
-            sh "docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+    stage('Login and Push Image to Docker Hub') {
+      steps {
+        script {
+          docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CRED_ID) {
+            docker.build('acetest-fitness-gym-flaskapp', '.').push("latest")
+          }
         }
+      }
     }
   }
 
