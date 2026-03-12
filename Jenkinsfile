@@ -31,15 +31,15 @@ pipeline {
       }
     }
 
-    stage('Login and Push Image to Docker Hub') {
-      steps {
-        script {
-          // Login to Docker Hub and push the image
-          docker.withRegistry('https://hub.docker.com', DOCKER_HUB_CRED_ID)
-          powershell "docker push ${USERNAME}/${IMAGE_NAME}:latest"
-        }
-      }
-    }
+    // stage('Login and Push Image to Docker Hub') {
+    //   steps {
+    //     script {
+    //       // Login to Docker Hub and push the image
+    //       docker.withRegistry('https://hub.docker.com', DOCKER_HUB_CRED_ID)
+    //       powershell "docker push ${USERNAME}/${IMAGE_NAME}:latest"
+    //     }
+    //   }
+    // }
   }
 
   post {
