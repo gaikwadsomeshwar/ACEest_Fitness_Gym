@@ -25,8 +25,10 @@ pipeline {
     stage('Run Unit Tests') {
       steps {
         script {
-          // Run unit tests using pytest
-          powershell 'docker run --rm ${IMAGE_NAME}:latest pytest'
+          // Run unit tests inside a temporary container
+          docker.image("${IMAGE_NAME}:latest").inside {
+            sh 'pytest'
+          }
         }
       }
     }
