@@ -1,11 +1,10 @@
 pipeline {
   agent any
   environment {
-    // Define variables for Docker Hub username/repo and credential ID
-    DOCKERHUB_REG = 'hub.docker.com'
-    DOCKER_USERNAME = 'someshwargaikwad'
-    DOCKER_CRED_ID = 'dockerhub-cred'
+    IMAGE_NAME = 'someshwargaikwad/acetest-fitness-gym-flaskapp'
+    DOCKER_HUB_CRED_ID = 'dockerhub-cred'
   }
+
   stages {
     stage('Checkout Code') {
       steps {
@@ -32,13 +31,20 @@ pipeline {
       }
     }
 
-    stage('Push DockerImage') {
+    stage('Login and Push Image to Docker Hub') {
       steps {
         script {
-          powershell 'echo ${env.DOCKER_CRED_ID} | docker login --username ${env.DOCKER_USERNAME} --password-stdin ${env.DOCKERHUB_REG}'
-          powershell 'docker push ${env.DOCKERHUB_USERNAME}/acetest-fitness-gym-flaskapp:latest'
+          docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CRED_ID) {
+            dockerImage.push('latest')
+          }
         }
       }
+    }
+
+    stage('Clean up') {
+        steps {
+            sh "docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+        }
     }
   }
 
