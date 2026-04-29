@@ -113,3 +113,93 @@
 2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
 2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
 2026-04-29 21:44:29 - aceest - WARNING - [flask_app.py:193] - Duplicate client error: Client with name Duplicate User already exists.
+2026-04-29 23:00:03 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 23:00:03.599579
+2026-04-29 23:00:03 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 23:00:27 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 23:00:27.609437
+2026-04-29 23:00:27 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 23:07:56 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 23:07:56.520134
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 23:07:56 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:07:56 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:07:56 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:07:56 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:07:56 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:07:56 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:187] - Successfully added client: Test User
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:07:56 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:07:56 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:187] - Successfully added client: Alpha
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:187] - Successfully added client: Beta
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:07:56 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:07:56 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:187] - Successfully added client: MetricUser
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:370] - Logging metrics for client_id=1
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:399] - Metrics logged successfully for client_id=1
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:220] - Accessing client profile: client_id=1
+2026-04-29 23:07:56 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:07:56 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:187] - Successfully added client: ProgramUser
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:429] - Generating program for client_id=1
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:442] - Generated program for client ProgramUser: focus=Hypertrophy
+2026-04-29 23:07:56 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:07:56 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:187] - Successfully added client: Duplicate User
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:07:56 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:07:56 - aceest - WARNING - [flask_app.py:193] - Duplicate client error: Client with name Duplicate User already exists.
+2026-04-29 23:08:04 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 23:08:04.035465
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 23:08:04 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:08:04 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:08:04 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:08:04 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:08:04 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:08:04 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:187] - Successfully added client: Test User
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:08:04 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:08:04 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:187] - Successfully added client: Alpha
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:187] - Successfully added client: Beta
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:08:04 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:08:04 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:187] - Successfully added client: MetricUser
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:370] - Logging metrics for client_id=1
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:399] - Metrics logged successfully for client_id=1
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:220] - Accessing client profile: client_id=1
+2026-04-29 23:08:04 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:08:04 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:187] - Successfully added client: ProgramUser
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:429] - Generating program for client_id=1
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:442] - Generated program for client ProgramUser: focus=Hypertrophy
+2026-04-29 23:08:04 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 23:08:04 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:187] - Successfully added client: Duplicate User
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 23:08:04 - aceest - WARNING - [flask_app.py:193] - Duplicate client error: Client with name Duplicate User already exists.

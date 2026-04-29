@@ -18,6 +18,17 @@ This directory contains Kubernetes manifests for several deployment strategies.
 ## Local Deployment Example
 
 Apply the core resources locally with Minikube or any Kubernetes cluster:
+To deploy and test locally using Minikube:
+
+1.  **Start Minikube:**
+    Ensure Minikube is running. If not, start it with:
+
+    ```bash
+    minikube start
+    ```
+
+2.  **Apply Core Resources:**
+    Apply the core resources to your Minikube cluster:
 
 ```bash
 kubectl apply -f k8s/deployment.yaml -f k8s/service.yaml
