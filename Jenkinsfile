@@ -14,7 +14,7 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        powershell 'python -m pip install --upgrade pip; pip install -r requirements.txt'
+        sh 'python -m pip install --upgrade pip; pip install -r requirements.txt'
       }
     }
 
@@ -22,7 +22,7 @@ pipeline {
       steps {
         script {
           def version = readFile('VERSION').trim()
-          powershell "docker build -t ${IMAGE_NAME}:${version} -t ${IMAGE_NAME}:latest ."
+          sh "docker build -t ${IMAGE_NAME}:${version} -t ${IMAGE_NAME}:latest ."
         }
       }
     }
@@ -31,7 +31,7 @@ pipeline {
       steps {
         script {
           def version = readFile('VERSION').trim()
-          powershell "docker run --rm ${IMAGE_NAME}:${version} pytest --maxfail=1 -q"
+          sh "docker run --rm ${IMAGE_NAME}:${version} pytest --maxfail=1 -q"
         }
       }
     }
@@ -40,8 +40,8 @@ pipeline {
       steps {
         script {
           def version = readFile('VERSION').trim()
-          powershell 'New-Item -ItemType Directory -Path build -Force | Out-Null'
-          powershell "docker save ${IMAGE_NAME}:${version} -o build/${IMAGE_NAME}_${version}.tar"
+          sh 'New-Item -ItemType Directory -Path build -Force | Out-Null'
+          sh "docker save ${IMAGE_NAME}:${version} -o build/${IMAGE_NAME}_${version}.tar"
         }
       }
     }
@@ -52,7 +52,7 @@ pipeline {
       }
       steps {
         script {
-          powershell 'sonar-scanner -Dsonar.login=$env:SONAR_TOKEN'
+          sh 'sonar-scanner -Dsonar.login=$env:SONAR_TOKEN'
         }
       }
     }
@@ -65,11 +65,11 @@ pipeline {
         script {
           withCredentials([usernamePassword(credentialsId: env.DOCKER_HUB_CRED_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
             def version = readFile('VERSION').trim()
-            powershell 'docker login -u $env:DOCKER_USERNAME -p $env:DOCKER_PASSWORD'
-            powershell "docker tag ${IMAGE_NAME}:${version} ${DOCKER_USERNAME}/${IMAGE_NAME}:${version}"
-            powershell "docker tag ${IMAGE_NAME}:${version} ${DOCKER_USERNAME}/${IMAGE_NAME}:latest"
-            powershell "docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:${version}"
-            powershell "docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:latest"
+            sh 'docker login -u $env:DOCKER_USERNAME -p $env:DOCKER_PASSWORD'
+            sh "docker tag ${IMAGE_NAME}:${version} ${DOCKER_USERNAME}/${IMAGE_NAME}:${version}"
+            sh "docker tag ${IMAGE_NAME}:${version} ${DOCKER_USERNAME}/${IMAGE_NAME}:latest"
+            sh "docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:${version}"
+            sh "docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:latest"
           }
         }
       }
