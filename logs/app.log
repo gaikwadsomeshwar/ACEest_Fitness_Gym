@@ -203,3 +203,5 @@
 2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
 2026-04-29 23:08:04 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
 2026-04-29 23:08:04 - aceest - WARNING - [flask_app.py:193] - Duplicate client error: Client with name Duplicate User already exists.
+2026-04-29 23:36:28 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 23:36:28.419366
+2026-04-29 23:36:28 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
