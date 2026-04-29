@@ -14,7 +14,7 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        pwsh 'python -m pip install --upgrade pip; pip install -r requirements.txt'
+        pwsh('python -m pip install --upgrade pip; pip install -r requirements.txt')
       }
     }
 
@@ -22,7 +22,7 @@ pipeline {
       steps {
         script {
           def version = readFile('VERSION').trim()
-          pwsh "docker build -t ${IMAGE_NAME}:${version} -t ${IMAGE_NAME}:latest ."
+          pwsh("docker build -t ${IMAGE_NAME}:${version} -t ${IMAGE_NAME}:latest .")
         }
       }
     }
@@ -31,7 +31,7 @@ pipeline {
       steps {
         script {
           def version = readFile('VERSION').trim()
-          pwsh "docker run --rm ${IMAGE_NAME}:${version} pytest --maxfail=1 -q"
+          pwsh("docker run --rm ${IMAGE_NAME}:${version} pytest --maxfail=1 -q")
         }
       }
     }
@@ -40,8 +40,8 @@ pipeline {
       steps {
         script {
           def version = readFile('VERSION').trim()
-          pwsh 'New-Item -ItemType Directory -Path build -Force | Out-Null'
-          pwsh "docker save ${IMAGE_NAME}:${version} -o build/${IMAGE_NAME}_${version}.tar"
+          pwsh('New-Item -ItemType Directory -Path build -Force | Out-Null')
+          pwsh("docker save ${IMAGE_NAME}:${version} -o build/${IMAGE_NAME}_${version}.tar")
         }
       }
     }
@@ -52,7 +52,7 @@ pipeline {
       }
       steps {
         script {
-          pwsh 'sonar-scanner -Dsonar.login=$env:SONAR_TOKEN'
+          pwsh('sonar-scanner -Dsonar.login=$env:SONAR_TOKEN')
         }
       }
     }
@@ -65,11 +65,11 @@ pipeline {
         script {
           withCredentials([usernamePassword(credentialsId: env.DOCKER_HUB_CRED_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
             def version = readFile('VERSION').trim()
-            pwsh 'docker login -u $env:DOCKER_USERNAME -p $env:DOCKER_PASSWORD'
-            pwsh "docker tag ${IMAGE_NAME}:${version} ${DOCKER_USERNAME}/${IMAGE_NAME}:${version}"
-            pwsh "docker tag ${IMAGE_NAME}:${version} ${DOCKER_USERNAME}/${IMAGE_NAME}:latest"
-            pwsh "docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:${version}"
-            pwsh "docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:latest"
+            pwsh('docker login -u $env:DOCKER_USERNAME -p $env:DOCKER_PASSWORD')
+            pwsh("docker tag ${IMAGE_NAME}:${version} ${DOCKER_USERNAME}/${IMAGE_NAME}:${version}")
+            pwsh("docker tag ${IMAGE_NAME}:${version} ${DOCKER_USERNAME}/${IMAGE_NAME}:latest")
+            pwsh("docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:${version}")
+            pwsh("docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:latest")
           }
         }
       }
