@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aceest-fitness-variant-a
+  labels:
+    app: aceest-fitness
+    variant: a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aceest-fitness
+      variant: a
+  template:
+    metadata:
+      labels:
+        app: aceest-fitness
+        variant: a
+    spec:
+      containers:
+        - name: aceest-fitness
+          image: someshwargaikwad/acetest-fitness-gym-flaskapp:latest
+          ports:
+            - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aceest-fitness-variant-b
+  labels:
+    app: aceest-fitness
+    variant: b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aceest-fitness
+      variant: b
+  template:
+    metadata:
+      labels:
+        app: aceest-fitness
+        variant: b
+    spec:
+      containers:
+        - name: aceest-fitness
+          image: someshwargaikwad/acetest-fitness-gym-flaskapp:ab-test
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aceest-fitness-ab-service
+spec:
+  selector:
+    app: aceest-fitness
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

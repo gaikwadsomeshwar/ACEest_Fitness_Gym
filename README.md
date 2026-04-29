@@ -1,88 +1,108 @@
 # ACEest Fitness Manager
 
-A foundational Flask web application tailored for fitness and gym management. This application allows trainers to manage clients, track workouts and body metrics, and generate basic workout programs based on specific fitness goals.
+Version: 0.1.0
+
+A modular Flask application built for fitness and gym client management, including client registration, workout logging, body metrics tracking, calorie targeting, and automated program generation.
 
 ## Features
 
-- **Client Management**: Register new clients with details like age, weight, height, and specific fitness programs (Fat Loss, Muscle Gain, Beginner).
-- **Dashboard**: A centralized view of all active clients and their key statistics.
-- **Calorie Calculator**: Automatically calculates daily calorie targets based on the selected program and client weight.
-- **Workout Logging**: Log daily workout sessions including type, duration, and notes.
-- **Metrics Tracking**: Track body weight, waist circumference, and body fat percentage over time.
-- **BMI Calculation**: Automatic BMI calculation and risk categorization on the client profile.
-- **AI Program Generator**: Generates a randomized 3-day workout schedule tailored to the client's focus area.
+- **Client Management**: Add and remove clients, track active memberships, and see client statistics in one dashboard.
+- **Automated Calorie Targets**: Calculates calorie goals for Fat Loss, Muscle Gain, and Beginner programs.
+- **Workout Logging**: Save workout sessions with type, duration, and notes.
+- **Metrics Tracking**: Record body weight, waist measurement, and body fat over time.
+- **BMI Calculation**: Displays BMI and category on the client profile.
+- **Program Generator**: Produces a sample 3-day workout schedule for each client.
+- **Health Endpoint**: Simple `/health` endpoint for monitoring and CI checks.
 
 ## Prerequisites
 
 - Python 3.12 or higher
-- pip (Python package installer)
+- Docker / Podman for container builds
+- Jenkins for CI/CD pipeline execution
 
-## Local Setup and Execution
+## Local Setup
 
-Follow these steps to set up and run the application on your local machine.
-
-### 1. Clone or Download the Repository
-
-Ensure all project files (Python scripts and HTML templates) are in the same directory.
-
-### 2. Create a Virtual Environment (Optional but Recommended)
-
-It is best practice to run Python applications in an isolated environment.
-
-**Windows:**
+1. Create and activate a virtual environment:
 
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-**macOS/Linux:**
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 3. Install Dependencies
-
-Install the required Python packages using `requirements.txt`.
+2. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Initialize the Database and Run the App
-
-Run the main application script. This will automatically create the SQLite database (`aceest_fitness.db`) if it does not exist.
+3. Run the application:
 
 ```bash
 python flask_app.py
 ```
 
-### 5. Access the Application
+4. Open the app:
 
-Open your web browser and navigate to:
-
-- **Local Machine:** `http://127.0.0.1:5000`
-- **Network:** `http://<your-ip-address>:5000`
+- `http://127.0.0.1:5000`
 
 ## Running Tests
 
-To verify the application logic and ensure everything is working as expected, you can run the included test suite manually.
-
-1. Ensure your virtual environment is activated and dependencies are installed.
-2. Run the tests using `pytest`:
+Execute the Pytest suite:
 
 ```bash
 pytest
 ```
 
-## Docker Setup (Recommended)
+## Docker Usage
 
-To avoid compatibility issues with local Python versions (like Python 3.14), run the application using Docker.
+Build and run the container:
 
 ```bash
-docker-compose up --build
+docker build -t acetest-fitness-gym-flaskapp:latest .
+docker run --rm -p 5000:5000 acetest-fitness-gym-flaskapp:latest
 ```
 
-The application will be available at `http://localhost:5000`.
+Or use Docker Compose:
+
+```bash
+docker compose up --build
+```
+
+## Jenkins CI Pipeline
+
+The repository includes a `Jenkinsfile` that performs:
+
+- source checkout
+- dependency installation
+- Docker image build and version tagging
+- containerized Pytest execution
+- artifact export with `docker save`
+- optional SonarQube analysis when `SONAR_TOKEN` is supplied
+- Docker Hub push on the `master` branch using credentials
+
+## SonarQube Static Analysis
+
+A `sonar-project.properties` file is included to support static analysis and quality gate enforcement.
+
+## Kubernetes Deployment
+
+Kubernetes manifests are available under `k8s/` for:
+
+- standard deployment and service
+- blue-green deployment
+- canary release
+- rolling updates
+- shadow deployment
+- A/B testing structure
+
+Apply core resources locally with:
+
+```bash
+kubectl apply -f k8s/deployment.yaml -f k8s/service.yaml
+```
+
+## Version Control and Release Strategy
+
+- `VERSION` contains the current application release version.
+- The Jenkins pipeline uses semantic versioning for Docker tags and build artifacts.
+- The repository is organized to support incremental feature branches, automated tests, and deployment artifacts.

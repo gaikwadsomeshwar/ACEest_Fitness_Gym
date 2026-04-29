@@ -1,0 +1,115 @@
+2026-04-29 21:24:46 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:24:46.977653
+2026-04-29 21:25:05 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:25:05.826320
+2026-04-29 21:25:09 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:25:09.320820
+2026-04-29 21:25:51 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:25:51.214916
+2026-04-29 21:25:56 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:25:56.399779
+2026-04-29 21:26:11 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:26:11.564160
+2026-04-29 21:26:24 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:26:24.419730
+2026-04-29 21:26:53 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:26:53.725410
+2026-04-29 21:26:53 - aceest - INFO - [flask_app.py:55] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:27:15 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:27:15.813227
+2026-04-29 21:27:15 - aceest - INFO - [flask_app.py:64] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:27:28 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:27:28.738404
+2026-04-29 21:27:28 - aceest - INFO - [flask_app.py:64] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:29:19 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:29:19.152558
+2026-04-29 21:29:19 - aceest - INFO - [flask_app.py:64] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:38:48 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:38:48.836823
+2026-04-29 21:38:48 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:38:54 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:38:54.428259
+2026-04-29 21:38:54 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:41:39 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:41:39.688397
+2026-04-29 21:41:39 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:41:40 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:41:40.398038
+2026-04-29 21:41:40 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:42:40 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:42:40.726562
+2026-04-29 21:42:41 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:42:41 - aceest - INFO - [flask_app.py:510] - ============================================================
+2026-04-29 21:42:41 - aceest - INFO - [flask_app.py:511] - Starting ACEest Fitness Gym Application
+2026-04-29 21:42:41 - aceest - INFO - [flask_app.py:512] - Version: 0.1.0
+2026-04-29 21:42:41 - aceest - INFO - [flask_app.py:513] - Database: aceest_fitness.db
+2026-04-29 21:42:41 - aceest - INFO - [flask_app.py:514] - ============================================================
+2026-04-29 21:42:41 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:42:41 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:42:42 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:42:42.425120
+2026-04-29 21:42:42 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:42:42 - aceest - INFO - [flask_app.py:510] - ============================================================
+2026-04-29 21:42:42 - aceest - INFO - [flask_app.py:511] - Starting ACEest Fitness Gym Application
+2026-04-29 21:42:42 - aceest - INFO - [flask_app.py:512] - Version: 0.1.0
+2026-04-29 21:42:42 - aceest - INFO - [flask_app.py:513] - Database: aceest_fitness.db
+2026-04-29 21:42:42 - aceest - INFO - [flask_app.py:514] - ============================================================
+2026-04-29 21:42:42 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:42:42 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:42:55 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 21:42:55 - aceest - WARNING - [flask_app.py:494] - 404 error: /favicon.ico
+2026-04-29 21:43:21 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:43:21.594363
+2026-04-29 21:43:21 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:43:21 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:43:21 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:43:21 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 21:43:21 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:43:21 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:44:14 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:44:14.083924
+2026-04-29 21:44:14 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:44:14 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:44:14.866300
+2026-04-29 21:44:14 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:44:16 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:44:16.812466
+2026-04-29 21:44:16 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:44:16 - aceest - INFO - [flask_app.py:510] - ============================================================
+2026-04-29 21:44:16 - aceest - INFO - [flask_app.py:511] - Starting ACEest Fitness Gym Application
+2026-04-29 21:44:16 - aceest - INFO - [flask_app.py:512] - Version: 0.1.0
+2026-04-29 21:44:16 - aceest - INFO - [flask_app.py:513] - Database: aceest_fitness.db
+2026-04-29 21:44:16 - aceest - INFO - [flask_app.py:514] - ============================================================
+2026-04-29 21:44:16 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:44:16 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:44:18 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:44:18.309229
+2026-04-29 21:44:18 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:44:18 - aceest - INFO - [flask_app.py:510] - ============================================================
+2026-04-29 21:44:18 - aceest - INFO - [flask_app.py:511] - Starting ACEest Fitness Gym Application
+2026-04-29 21:44:18 - aceest - INFO - [flask_app.py:512] - Version: 0.1.0
+2026-04-29 21:44:18 - aceest - INFO - [flask_app.py:513] - Database: aceest_fitness.db
+2026-04-29 21:44:18 - aceest - INFO - [flask_app.py:514] - ============================================================
+2026-04-29 21:44:18 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:44:18 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:44:29 - aceest - INFO - [logging_config.py:69] - Logging initialized at 2026-04-29 21:44:29.319048
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:65] - Flask app initialized: None mode, v0.1.0
+2026-04-29 21:44:29 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:44:29 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 21:44:29 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:44:29 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:44:29 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:44:29 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:187] - Successfully added client: Test User
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 21:44:29 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:44:29 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:187] - Successfully added client: Alpha
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:187] - Successfully added client: Beta
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 21:44:29 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:44:29 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:187] - Successfully added client: MetricUser
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:370] - Logging metrics for client_id=1
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:399] - Metrics logged successfully for client_id=1
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:220] - Accessing client profile: client_id=1
+2026-04-29 21:44:29 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:44:29 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:187] - Successfully added client: ProgramUser
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:429] - Generating program for client_id=1
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:442] - Generated program for client ProgramUser: focus=Hypertrophy
+2026-04-29 21:44:29 - aceest - INFO - [database.py:48] - Initializing database schema...
+2026-04-29 21:44:29 - aceest - INFO - [database.py:146] - Database initialization completed successfully
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:187] - Successfully added client: Duplicate User
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:88] - Accessing index/dashboard page
+2026-04-29 21:44:29 - aceest - INFO - [flask_app.py:146] - Attempting to add new client
+2026-04-29 21:44:29 - aceest - WARNING - [flask_app.py:193] - Duplicate client error: Client with name Duplicate User already exists.

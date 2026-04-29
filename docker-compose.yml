@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .
+    image: acetest-fitness-gym-flaskapp:latest
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_APP: flask_app.py
+      FLASK_ENV: production
+    restart: unless-stopped

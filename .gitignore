@@ -18,5 +18,8 @@ __pycache__/
 .vscode/
 .idea/
 
+# Docker build output
+build/
+
 # macOS specific files
 .DS_Store
